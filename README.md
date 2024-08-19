@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# About this App
+
+This is a Next.js app that uses the OpenAI API to generate and store flashcards. It is a simple app that allows you to generate flashcards from any text you enter. Users can subscribe for a premium account to have unlimited flashcards.
+
+# How to Install
+
+npm install
+setup environment variables for firebase, clerk, stripe and openai
+npm run dev
 
 ## Getting Started
 
