@@ -106,6 +106,10 @@ export default function RootLayout({ children }) {
                           sx={{ color: pathname === '/generate' ? 'secondary.main' : 'inherit', mr: 1 }}>
                     Generate
                   </Button>
+                  <Button color="inherit" component={Link} href="/flashcards" 
+                          sx={{ color: pathname === '/flashcards' ? 'secondary.main' : 'inherit', mr: 1 }}>
+                    My Cards
+                  </Button>
                   <SignedOut>
                     <Button color="inherit" component={Link} href="/signin" sx={{ mr: 1 }}>Login</Button>
                     <Button color="inherit" component={Link} href="/signup">Sign Up</Button>

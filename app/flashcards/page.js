@@ -54,10 +54,10 @@ export default function Flashcards() {
             <Grid container spacing={2}>
                 {flashcards.map((flashcard, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
-                        <Card sx={{ backgroundColor: 'rgb(225 188 240 / 87%)' }}>
+                        <Card sx={{ backgroundColor: 'rgb(228 207 237 / 87%)' }}>
                             <CardActionArea onClick={() => {handleCardClick(flashcard.name)}}>
                                 <CardContent>
-                                    <Typography variant="h5">{flashcard.name}</Typography>
+                                    <Typography variant="h5" sx={{ textTransform: 'uppercase' }}>{flashcard.name}</Typography>
                                 </CardContent>
                             </CardActionArea>
                         </Card>

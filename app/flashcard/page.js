@@ -90,7 +90,7 @@ export default function Flashcard({search}) {
         <Container maxWidth="lg">
                    {flashcards.length > 0 && (
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <Typography variant="h4" sx={{ mb: 3 }}>{search}</Typography>
+                            <Typography variant="h4" sx={{ mt:3,mb: 3, textTransform: 'uppercase'}}>{search}</Typography>
                             <Box sx={{ width: '350px', height: '400px', perspective: '1000px', mb: 3 }}>
                                 <Paper 
                                     onClick={() => setFlipped(!flipped)} 

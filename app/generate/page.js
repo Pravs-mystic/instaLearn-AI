@@ -1,6 +1,6 @@
 'use client'
 import { useUser } from "@clerk/nextjs";
-import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, TextField, Typography, IconButton, Tooltip, Alert } from "@mui/material";
+import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, TextField, Typography, IconButton, Tooltip, Alert, CircularProgress } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CreateIcon from '@mui/icons-material/Create';
@@ -19,11 +19,13 @@ export default function Generate() {
     const [name, setName] = useState('');
     const [open, setOpen] = useState(false);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const maxChars = 1200;
 
 
     const handleSubmit = async () => {
+        setIsLoading(true);
         fetch('/api/generate', {
             method: 'POST',
             body: text,
@@ -33,7 +35,8 @@ export default function Generate() {
             setFlashcards(data);
             console.log(`flashcards after api call`, data);
         })
-        .catch(error => console.error('error', error));
+        .catch(error => console.error('error', error))
+        .finally(() => setIsLoading(false));
     }
 
     const handleCardClick = (id) => {
@@ -155,7 +158,13 @@ export default function Generate() {
 
                 {/* Preview Section */}
                 <Grid item xs={12} md={6}>
-                    {flashcards.length > 0 && (
+                    {isLoading ? (
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+                            <CircularProgress size={60} />
+                            <Typography variant="h6" sx={{ mt: 2 }}>Generating Flashcards...</Typography>
+                        </Box>
+                    ) : 
+                    flashcards.length > 0 && (
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <Typography variant="h4" sx={{ mb: 3 }}>Flashcards Preview</Typography>
                             <Box sx={{ width: '350px', height: '400px', perspective: '1000px', mb: 3 }}>
